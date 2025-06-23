@@ -12,10 +12,10 @@ RUN \
     # Install shadow-utils for adduser functionality
     microdnf -y install shadow-utils \
     # Install Python 3.9
-    && microdnf -y install python39 pip \
+    && microdnf -y install python311 pip \
     # Install pdm
     && pip install -U pdm
-    
+
 RUN  \
     # Install application
     pdm install --check --prod --no-editable

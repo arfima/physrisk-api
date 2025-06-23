@@ -3,34 +3,31 @@ name = "physrisk-api"
 version = "v1.0.0"
 description = "OS-Climate Physical Risk API"
 authors = [
-  { name = "Joe Moorhouse", email = "5102656+joemoorhouse@users.noreply.github.com" },
+    { name = "Joe Moorhouse", email = "5102656+joemoorhouse@users.noreply.github.com" },
 ]
-requires-python = ">=3.9,<3.11"
+requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 keywords = ["Climate", "Finance"]
 classifiers = [
-  "Intended Audience :: Developers",
-  "Intended Audience :: Science/Research",
-  "License :: OSI Approved :: Apache Software License",
-  "Operating System :: MacOS",
-  "Operating System :: Microsoft :: Windows",
-  "Operating System :: Unix",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.8",
-  "Topic :: Office/Business :: Financial",
-  "Topic :: Scientific/Engineering",
-  "Topic :: Software Development",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Unix",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development",
 ]
-dependencies = [
-  "fastapi[standard]",
-  "physrisk-lib>=1.0.3"
-]
+dependencies = ["fastapi[standard]", "physrisk-lib>=1.0.11"]
 
 [project.urls]
 Homepage = "https://github.com/os-climate/physrisk-api"
@@ -41,10 +38,7 @@ Documentation = "https://github.com/os-climate/physrisk-api/tree/main/docs"
 "Source Code" = "https://github.com/os-climate/physrisk-api"
 
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
-]
+requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
@@ -120,14 +114,17 @@ exclude = [
 [tool.ruff.lint]
 extend-fixable = [
     # Instead of trailing-whitespace
-    "W291", "W293"
-    ]
+    "W291",
+    "W293",
+]
 
 extend-select = [
     # Instead of pydocstyle
     "D",
     #Instead of flake8
-    "E", "F","B",
+    "E",
+    "F",
+    "B",
     # Instead of pep8-naming
     "N",
     # Instead of flake8-debugger or debug-statements
@@ -142,7 +139,11 @@ ignore = [
     "D213",
 
     # Ignore this rules so that precommit passes. Uncomment to start fixing them
-    "B006", "B008", "B904", "B012", "B024",
+    "B006",
+    "B008",
+    "B904",
+    "B012",
+    "B024",
     "D",
 ]
 
@@ -162,29 +163,16 @@ docstring-code-format = true
 docstring-code-line-length = "dynamic"
 
 [tool.pdm.dev-dependencies]
-dev = [
-    "mypy",
-    "pre-commit",
-    "ruff"
-]
+dev = ["mypy", "pre-commit", "ruff"]
 
 [tool.pdm.scripts]
 test = "pytest"
 lint = "pre-commit run --all-files"
 ruff = "ruff"
 complete = { call = "tasks.complete:main", help = "Create autocomplete files for bash and fish" }
-all = {composite = ["pytest", "lint"]}
+all = { composite = ["pytest", "lint"] }
 
 
 [dependency-groups]
-test = [
-    "pdm[pytest]",
-    "pytest",
-    "pytest-cov",
-    "httpx>=0.28.1",
-]
-dev = [
-    "mypy",
-    "pre-commit",
-    "ruff"
-]
+test = ["pdm[pytest]", "pytest", "pytest-cov", "httpx>=0.28.1"]
+dev = ["mypy", "pre-commit", "ruff"]
